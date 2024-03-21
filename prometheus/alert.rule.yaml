@@ -3,12 +3,12 @@ kind: ConfigMap
 metadata:
   name: prometheus-alert
 data:
-  alert-rule.yaml: |
+  alert.rule.yaml: |
     groups:
     - name: kubernetes-pods
       rules:
       - alert: PodDown
-        expr: absent(up{job="kubelet"} == 1) // Assuming kubelet exporter is used
+        expr: absent(up{job="kubelet"} == 1) 
         for: 1m
         labels:
           severity: critical
